@@ -16,8 +16,7 @@ import edu.duke.cs.jflap.automata.AutomatonSimulator;
 import edu.duke.cs.jflap.grammar.UnboundGrammar;
 import edu.duke.cs.jflap.grammar.parse.BruteParser;
 import com.usmanshahid.jflapcli.IO;
-
-
+import java.lang.IllegalArgumentException;
 
 
 
@@ -60,10 +59,14 @@ class RunOnce implements Runnable {
             System.out.println("regex");
         } else if (jflapObj instanceof edu.duke.cs.jflap.grammar.UnboundGrammar) {
             UnboundGrammar g = (UnboundGrammar) jflapObj;
-            BruteParser parser = BruteParser.get(g, this.input);
-            parser.start();
-            while(!parser.isFinished());
-            System.out.println(parser.getAnswer() != null);
+            try {
+                BruteParser parser = BruteParser.get(g, this.input);
+                parser.start();
+                while(!parser.isFinished());
+                System.out.println(parser.getAnswer() != null);
+            } catch (IllegalArgumentException ex){
+                System.out.println(false);
+            }
         } else {
             throw new RuntimeException("Cannot handle JFLAP object of type " + jflapObj.getClass());
         }
