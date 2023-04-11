@@ -2,7 +2,48 @@
 A command line utility for the JFLAP software. Can be used for autograding or embedding in other applications.
 
 
-# JFLAP 7.1 license
+## Build
+This project can be built using gradle. First, clone this repo:
+
+```
+git clone https://github.com/ushahid/jflap-cli
+```
+
+Run gradle build
+
+```
+gradlew build
+```
+
+The JAR file with all dependencies is bulit in `app/build/libs/app-all.jar`.
+
+Rename it to jflapcli.jar and run it as:
+
+```
+java -jar jflapcli.jar runonce FILEPATH test_string
+```
+
+Where `FILEPATH` is a valid JFLAP file containg FSM/PDA/TM or Grammar. It should print out true if the string is accepted/generated or false otherwise.
+
+Use the following command to generate the help messsage:
+```
+java -jar jflapcli.jar help
+```
+
+## Features
+Curently it supports testing single input (runonce subcommand) for FSM/PDA/TM/Mealy/Moore and Grammars.
+
+
+## ToDO
+- Add support for Regex
+- Add support for multiple inputs
+
+
+## Inspired by
+https://github.com/citiususc/jflap-lib
+
+
+## JFLAP 7.1 license
 This project contains the original JFLAP 7.1 source code with minor modications in jflap-core subdirectory. This code is available under the following original license:
 
     JFLAP 7.1 LICENSE
