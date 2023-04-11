@@ -52,19 +52,19 @@ public class PDAStepByStateSimulator extends AutomatonSimulator {
 		super(automaton);
 		/** default acceptance is by final state. */
 		
-		Object[] possibleValues = {"Final State", "Empty Stack"};
-		Object selectedValue = JOptionPane.showInputDialog(null,
-		            "Accept by", "Input",
-		            JOptionPane.INFORMATION_MESSAGE, null,
-		            possibleValues, possibleValues[0]);
-		if(selectedValue.equals(possibleValues[0])){
-			myAcceptance = FINAL_STATE;
-			//EDebug.print("fstate");
-		}else if(selectedValue.equals(possibleValues[1])){
-			myAcceptance = EMPTY_STACK;
-			//EDebug.print("estack");
-		}
-		//myAcceptance = FINAL_STATE;
+		// Object[] possibleValues = {"Final State", "Empty Stack"};
+		// Object selectedValue = JOptionPane.showInputDialog(null,
+		//             "Accept by", "Input",
+		//             JOptionPane.INFORMATION_MESSAGE, null,
+		//             possibleValues, possibleValues[0]);
+		// if(selectedValue.equals(possibleValues[0])){
+		// 	myAcceptance = FINAL_STATE;
+		// 	//EDebug.print("fstate");
+		// }else if(selectedValue.equals(possibleValues[1])){
+		// 	myAcceptance = EMPTY_STACK;
+		// 	//EDebug.print("estack");
+		// }
+		myAcceptance = FINAL_STATE;
 		//myAcceptance=selectedValue;
 	}
 

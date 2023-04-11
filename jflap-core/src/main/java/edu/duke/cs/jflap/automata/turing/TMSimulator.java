@@ -352,6 +352,14 @@ outer:  while (true){
 	 *         the machine in a final state
 	 */
 	public boolean isAccepted() {
+        Iterator it = myConfigurations.iterator();
+		while (it.hasNext()) {
+			TMConfiguration configuration = (TMConfiguration) it.next();
+			State currentState = configuration.getCurrentState();
+			if (myAutomaton.isFinalState(currentState)) {
+				return true;
+			}
+		}
 		return false;
 	}
 

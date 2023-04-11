@@ -9,6 +9,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+    id("com.github.johnrengelman.shadow") version "8.1.1"
 }
 
 repositories {
@@ -18,14 +19,23 @@ repositories {
 
 dependencies {
     // Use JUnit test framework.
-    testImplementation("junit:junit:4.13.2")
+    // testImplementation("junit:junit:4.13.2")
 
     // This dependency is used by the application.
-    implementation("com.google.guava:guava:31.1-jre")
+    // implementation("com.google.guava:guava:31.1-jre")
     implementation(project(":jflap-core"))
+    implementation("info.picocli:picocli:4.7.1")
+
 }
 
 application {
     // Define the main class for the application.
-    mainClass.set("com.usmanshahid.jflapcli.App")
+    mainClass.set("com.usmanshahid.jflapcli.JflapCli")
 }
+
+
+// tasks.jar { // could also be a new task rather than the default one
+//     manifest {
+//         attributes["Main-Class"] = "com.usmanshahid.jflapcli.JflapCli"
+//     }
+// }
