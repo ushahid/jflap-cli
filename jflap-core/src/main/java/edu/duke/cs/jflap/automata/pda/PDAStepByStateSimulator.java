@@ -198,16 +198,16 @@ public class PDAStepByStateSimulator extends AutomatonSimulator {
 				configurationsToAdd.addAll(configsToAdd);
 				it.remove();
                 count++;
-                if(count > 10000){
-                    int result = JOptionPane.showConfirmDialog(null, "JFLAP has generated 10000 configurations. Continue?");
-                    switch (result) {
-                    case JOptionPane.CANCEL_OPTION:
-                        continue;
-                    case JOptionPane.NO_OPTION:
-                        return false;
-                    default:
-                    }
-                }
+                // if(count > 10000){
+                //     int result = JOptionPane.showConfirmDialog(null, "JFLAP has generated 10000 configurations. Continue?");
+                //     switch (result) {
+                //     case JOptionPane.CANCEL_OPTION:
+                //         continue;
+                //     case JOptionPane.NO_OPTION:
+                //         return false;
+                //     default:
+                //     }
+                // }
 			}
 			myConfigurations.addAll(configurationsToAdd);
 		}
