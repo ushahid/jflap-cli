@@ -78,10 +78,8 @@ public class GrammarTester {
             throw new RuntimeException(NO_TERMINALS_MESSAGE);
         }
 
-
         // Convert chomsky and return
         Grammar ug = getCNF(g);
-        System.out.println(ug);
         return ug;
     }
 

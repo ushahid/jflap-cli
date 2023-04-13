@@ -442,6 +442,7 @@ public class LambdaProductionRemover {
 	public Grammar getLambdaProductionlessGrammar(Grammar grammar, Set lambdaSet) {
 		Grammar g = new ContextFreeGrammar();
 		g.addProductions(getProductionsToAddToGrammar(grammar, lambdaSet));
+		g.setStartVariable(grammar.getStartVariable());
 		return g;
 	}
 

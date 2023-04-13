@@ -343,6 +343,7 @@ public class UnitProductionRemover {
 		Grammar uplgrammar = new ContextFreeGrammar();
 		addAllNonUnitProductionsToGrammar(grammar, uplgrammar);
 		addAllNewProductionsToGrammar(grammar, uplgrammar, graph);
+		uplgrammar.setStartVariable(grammar.getStartVariable());
 		return uplgrammar;
 	}
 }
