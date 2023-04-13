@@ -1,4 +1,4 @@
-package com.usmanshahid.jflapcli;
+package com.usmanshahid.jflapcli.utils;
 
 import edu.duke.cs.jflap.file.XMLCodec;
 import java.io.Serializable;

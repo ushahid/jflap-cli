@@ -10,18 +10,20 @@ import picocli.CommandLine.Parameters;
 import java.io.Serializable;
 import java.nio.BufferOverflowException;
 
+import com.usmanshahid.jflapcli.grammar.GrammarTester;
+import com.usmanshahid.jflapcli.utils.IO;
+
 import edu.duke.cs.jflap.automata.Automaton;
 import edu.duke.cs.jflap.automata.SimulatorFactory;
 import edu.duke.cs.jflap.automata.AutomatonSimulator;
 import edu.duke.cs.jflap.grammar.UnboundGrammar;
 import edu.duke.cs.jflap.grammar.parse.BruteParser;
-import com.usmanshahid.jflapcli.IO;
+
 import java.lang.IllegalArgumentException;
 
 
 
-@Command(name = "jflapcli", subcommands = { RunOnce.class, CommandLine.HelpCommand.class },
-            description = "JFLAP cli utility")
+@Command(name = "jflapcli", subcommands = { RunOnce.class, CommandLine.HelpCommand.class }, description = "JFLAP cli utility")
 public class JflapCli {
     public static void main(String[] args) {
         int exitCode = new CommandLine(new JflapCli()).execute(args); 
@@ -59,14 +61,17 @@ class RunOnce implements Runnable {
             System.out.println("regex");
         } else if (jflapObj instanceof edu.duke.cs.jflap.grammar.UnboundGrammar) {
             UnboundGrammar g = (UnboundGrammar) jflapObj;
-            try {
-                BruteParser parser = BruteParser.get(g, this.input);
-                parser.start();
-                while(!parser.isFinished());
-                System.out.println(parser.getAnswer() != null);
-            } catch (IllegalArgumentException ex){
-                System.out.println(false);
-            }
+            // try {
+            //     BruteParser parser = BruteParser.get(g, this.input);
+            //     parser.start();
+            //     while(!parser.isFinished());
+            //     System.out.println(parser.getAnswer() != null);
+            // } catch (IllegalArgumentException ex){
+            //     System.out.println(false);
+            // }
+            GrammarTester tester = new GrammarTester(g);
+            System.out.println(tester.canGenerate(input));
+
         } else {
             throw new RuntimeException("Cannot handle JFLAP object of type " + jflapObj.getClass());
         }
