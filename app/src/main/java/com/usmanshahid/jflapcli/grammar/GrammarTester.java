@@ -40,8 +40,6 @@ public class GrammarTester {
         Grammar cnf;
         try {
             cnf = convertCNF(input);
-            
-
         } catch (RuntimeException ex){
             if(ex.getMessage() == START_SYMBOL_MESSAGE){
                 return true;
@@ -61,7 +59,7 @@ public class GrammarTester {
         // Remove lambda productions
         LambdaProductionRemover lambdaRemover = new LambdaProductionRemover();
         Set lambdaDerivers = lambdaRemover.getCompleteLambdaSet(myGrammar);
-        if (lambdaDerivers.contains(myGrammar.getStartVariable()) && input == "") {
+        if (lambdaDerivers.contains(myGrammar.getStartVariable()) && input.isEmpty()) {
             throw new RuntimeException(START_SYMBOL_MESSAGE);
         }
 
@@ -73,10 +71,6 @@ public class GrammarTester {
         VariableDependencyGraph vdg = unitRemover.getVariableDependencyGraph(g);
         g  = unitRemover.getUnitProductionlessGrammar(g, vdg);
 
-        if(g.getStartVariable() == null){
-            g.setStartVariable("S");
-        }
-
         // Remove useless
         g = UselessProductionRemover.getUselessProductionlessGrammar(g);
 
@@ -87,6 +81,7 @@ public class GrammarTester {
 
         // Convert chomsky and return
         Grammar ug = getCNF(g);
+        System.out.println(ug);
         return ug;
     }
 
